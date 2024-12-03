@@ -4,14 +4,9 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Archief') }} 
             </h2>
-            {{-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-left" 
-                    onclick="window.location.href='{{ url("/events/create") }}'">
-                Maak nieuw event aan
-            </button> --}}
         </div>
     </x-slot>
  
-
     <div class="p-5 h-screen bg-gray-100 dark:bg-gray-900">
   
         @if (session('success'))
@@ -25,30 +20,6 @@
             <span class="block sm:inline">{{ session('error') }}</span>
         </div>
     @endif
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                var successMessage = document.getElementById('success-message');
-                if (successMessage) {
-                    successMessage.style.display = 'none';
-                }
-            }, 4000); 
-    
-
-            setTimeout(function() {
-                var errorMessage = document.getElementById('error-message');
-                if (errorMessage) {
-                    errorMessage.style.display = 'none';
-                }
-            }, 4000); 
-        });
-    </script>
-    
-     
-         
-   
-
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg">
                 <thead>
@@ -84,8 +55,6 @@
                             <td class="py-5 px-4 border-b text-white">
                                 <a href="{{ route('archive.edit', ['event' => $event->id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Bewerken</a>
                             </td>
-                
-                            
                             <td class="py-5 px-4 border-b text-white">
                                 <form action="{{ route('archive.destroy', ['event' => $event->id]) }}" method="POST">
                                     @csrf
@@ -93,11 +62,8 @@
                                     <input type="submit" value="Verwijderen" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                 </form>
                             </td>
-                            
-                            
                         </tr>
-                    @endforeach 
-                    
+                    @endforeach                     
                 </tbody>
             </table>
         </div>

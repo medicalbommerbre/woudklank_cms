@@ -11,6 +11,8 @@ class History extends Model
     protected $table = 'history';
     protected $fillable = [
         'title',
-        'description'
+        'description',
+        'priority'
+
     ];
 }

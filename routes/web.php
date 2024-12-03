@@ -6,7 +6,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
-use App\Models\HomePage;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,6 +18,7 @@ Route::view('/', 'auth.login');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 // Home route handling
 Route::get('/home',[HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home.home');
 Route::get('/home/create', [HomeController::class, 'create'])->middleware(['auth', 'verified'])->name('home.create');
@@ -27,10 +27,14 @@ Route::get('/home/{home}/edit', [HomeController::class, 'edit'])->middleware(['a
 Route::put('/home/{home}/update', [HomeController::class, 'update'])->middleware(['auth', 'verified'])->name('home.update');
 Route::delete('/home/{home}', [HomeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('home.destroy');
 // End home route handling
-Route::get('/history',[HistoryController::class, 'index'])->middleware(['auth', 'verified'])->name('history.history');
+
 // Geschiedenis route handling
-
-
+Route::get('/history',[HistoryController::class, 'index'])->middleware(['auth', 'verified'])->name('history.history');
+Route::get('/history/create', [HistoryController::class, 'create'])->middleware(['auth', 'verified'])->name('history.create');
+Route::post('/history', [HistoryController::class, 'store'])->middleware(['auth', 'verified'])->name('history.store');
+Route::get('/history/{history}/edit', [HistoryController::class, 'edit'])->middleware(['auth', 'verified'])->name('history.edit');
+Route::put('/history/{history}/update', [HistoryController::class, 'update'])->middleware(['auth', 'verified'])->name('history.update');
+Route::delete('/history/{history}', [HistoryController::class, 'destroy'])->middleware(['auth', 'verified'])->name('history.destroy');
 // Geschiedenis route handling
 
 // Event route handling

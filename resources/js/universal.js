@@ -1,6 +1,16 @@
-setTimeout(function() {
-    document.getElementById('success-message').style.display = 'none';
-}, 500);
-setTimeout(function() {
-    document.getElementById('error-message').style.display = 'none';
-}, 500);
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        var successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+    }, 4000); 
+
+
+    setTimeout(function() {
+        var errorMessage = document.getElementById('error-message');
+        if (errorMessage) {
+            errorMessage.style.display = 'none';
+        }
+    }, 4000); 
+});
