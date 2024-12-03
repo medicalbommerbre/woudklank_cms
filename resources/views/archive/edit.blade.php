@@ -31,18 +31,11 @@
         <div id="success-message" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
             <span class="block sm:inline">{{ session('success') }}</span>
         </div>
-        <script>
-            setTimeout(function() {
-                document.getElementById('succes-message').style.display = 'none';
-            }, 4000);</script>
+
     @elseif (session('error'))
         <div id="error-message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
             <span class="block sm:inline">{{ session('error') }}</span>
         </div>
-        <script>
-        setTimeout(function() {
-            document.getElementById('error-message').style.display = 'none';
-        }, 4000);</script>
     @endif
         <form method="POST" action="{{route('archive.update',['event'=> $event])}}" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             @csrf

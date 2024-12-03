@@ -22,10 +22,15 @@ class HomeController extends Controller
             'type' => 'nullable|string',
             'foto_path' => 'nullable|string',
             'content' => 'required|string|max:255',
-            'order' => 'required|integer',
+            'order' => 'nullable|integer',
         ]);
+
+        if(empty($data['priority'])){
+            $nextNumber = HomePage::max('order') +1;
+            $data['order'] = $nextNumber;
+        }
     
-      
+       
         HomePage::where('order', '>=', $data['order'])->increment('order');
         HomePage::create($data);
     

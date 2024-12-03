@@ -28,26 +28,6 @@
             <span class="block sm:inline">{{ session('error') }}</span>
         </div>
     @endif
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                var successMessage = document.getElementById('success-message');
-                if (successMessage) {
-                    successMessage.style.display = 'none';
-                }
-            }, 4000); 
-    
-
-            setTimeout(function() {
-                var errorMessage = document.getElementById('error-message');
-                if (errorMessage) {
-                    errorMessage.style.display = 'none';
-                }
-            }, 4000); 
-        });
-    </script>
- 
         <form method="POST" action="{{ route('newsletter.store') }}" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             @csrf
             @method('POST')
