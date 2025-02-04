@@ -20,7 +20,6 @@ class HomeController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'nullable|string',
-            'foto_path' => 'nullable|string',
             'content' => 'required|string|max:255',
             'order' => 'nullable|integer',
         ]);
@@ -40,7 +39,6 @@ class HomeController extends Controller
     
     public function edit(HomePage $home)
     {
-        
         return view('home.edit', ['home' => $home]);
     }
 
@@ -50,8 +48,7 @@ class HomeController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'nullable|string',
-            'foto_path' => 'nullable|string',
-            'content' => 'required|string|max:255',
+          'content' => 'required|string|max:255',
             'order' => 'nullable|integer',
         ]);
     

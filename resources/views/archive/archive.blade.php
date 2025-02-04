@@ -4,6 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Archief') }} 
             </h2>
+            <div class="invisible py-2 px-4">Placeholder</div>
         </div>
     </x-slot>
  

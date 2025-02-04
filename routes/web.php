@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\HomePhotoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,6 +28,18 @@ Route::get('/home/{home}/edit', [HomeController::class, 'edit'])->middleware(['a
 Route::put('/home/{home}/update', [HomeController::class, 'update'])->middleware(['auth', 'verified'])->name('home.update');
 Route::delete('/home/{home}', [HomeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('home.destroy');
 // End home route handling
+
+// Photo home route handling
+
+Route::get('/home/photos/{home}', [HomePhotoController::class, 'index'])->name('homefoto.foto');
+Route::get('/home/photos/{home}/addphoto', [HomePhotoController::class, 'create'])->name('homefoto.create');
+
+Route::get('/home/photo/edit/{photo}', [HomePhotoController::class, 'edit'])->middleware(['auth', 'verified'])->name('homefoto.edit');
+Route::put('/homefoto/{photo}/update', [HomeController::class, 'update'])->middleware(['auth', 'verified'])->name('homefoto.update');
+Route::post('/home/photo', [HomePhotoController::class, 'store'])->middleware(['auth', 'verified'])->name('homefoto.store');
+Route::delete('/home/photo/{home}', [HomePhotoController::class, 'destroy'])->middleware(['auth', 'verified'])->name('homefoto.destroy');
+// End photo home route handling
+
 
 // Geschiedenis route handling
 Route::get('/history',[HistoryController::class, 'index'])->middleware(['auth', 'verified'])->name('history.history');

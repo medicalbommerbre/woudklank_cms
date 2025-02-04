@@ -2,12 +2,22 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Home') }} 
+                {{ __('Home Fotos') }} 
             </h2>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-left" 
-                    onclick="window.location.href='{{ url('/home/create') }}'">
-                Maak een nieuw home item aan
-            </button>
+
+            <div class="flex justify-start">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-4 rounded float-left"
+                onclick="window.location.href='{{ url('/home/photos/' . request()->home . '/addphoto') }}'">
+                    Voeg foto toe
+                </button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
+                onclick="window.history.back();">
+       
+                   Terug
+               </button>
+        
+            </div>
+
         </div>
     </x-slot>
  
@@ -28,32 +38,26 @@
             <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg">
                 <thead>
                     <tr class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-left">
-                        <th class="py-5 px-4 border-b">Prioriteit</th>
-                        <th class="py-5 px-4 border-b">Type</th>
-                        <th class="py-5 px-4 border-b">Titel</th>
-                        <th class="py-5 px-4 border-b">Content</th>
-                        <th class="py-5 px-4 border-b">Foto's inzien</th>
+                        <th class="py-5 px-4 border-b">ID</th>
+                        <th class="py-5 px-4 border-b">Caption</th>
+                        <th class="py-5 px-4 border-b">Foto</th>
                         <th class="py-5 px-4 border-b">Bewerken</th>
                         <th class="py-5 px-4 border-b">Verwijderen</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($home as $home1)
+                    @foreach ($home as $homePhoto)
                         <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <td class="py-5 px-4 border-b text-white">{{ $home1->order }}</td>
-                            <td class="py-5 px-4 border-b text-white">{{ $home1->type}}</td>
-                            <td class="py-5 px-4 border-b text-white">{{ $home1->title }}</td>
-                            <td class="py-5 px-4 border-b text-white">{{ $home1->content }}</td>
-                            
+                            <td class="py-5 px-4 border-b text-white">{{ $homePhoto->home_id }}</td>
+                            <td class="py-5 px-4 border-b text-white">{{ $homePhoto->caption }}</td>
                             <td class="py-5 px-4 border-b text-white">
-                                <a href="{{ route('homefoto.foto', ['home' => $home1->id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Foto's</a>
-                            </td>
-    
-                            <td class="py-5 px-4 border-b text-white">
-                                <a href="{{ route('home.edit', ['home' => $home1->id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Bewerken</a>
+                                <img src="{{ asset( $homePhoto->photo_path) }}" alt="" class="w-20 h-20 rounded">
                             </td>
                             <td class="py-5 px-4 border-b text-white">
-                                <form action="{{ route('home.destroy', ['home' => $home1->id]) }}" method="POST">
+                                <a href="{{ route('homefoto.edit', ['home' => $homePhoto->home_id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Bewerken</a>
+                            </td>
+                            <td class="py-5 px-4 border-b text-white">
+                                <form action="{{ route('homefoto.destroy', ['home' => $homePhoto->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE') 
                                     <input type="submit" value="Verwijderen" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
