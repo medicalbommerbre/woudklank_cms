@@ -31,7 +31,7 @@
             <form method="POST" action="{{route('home.update',['home'=> $home])}}" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             @csrf
             @method('PUT')
-            {{-- {{dd($homepage)}} --}}
+            
 
             <div class="mb-4">
                 <label for="title" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Caption</label>
@@ -44,13 +44,6 @@
                 <input type="text" name="type" id="type" value="{{ $home->type }}"
                        class="text-gray-700 dark:text-gray-300 dark:bg-gray-700 w-full py-2 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-
-            <div class="mb-4">
-                <label for="foto_path" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Foto</label>
-                <input type="file" name="foto_path" id="foto_path" 
-                       class="text-gray-700 dark:text-gray-300 dark:bg-gray-700 w-full py-2 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
-
             <div class="mb-4">
                 <label for="content" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Inhoud</label>
                 <input type="text" name="content" id="content" value="{{ $home->content}}"

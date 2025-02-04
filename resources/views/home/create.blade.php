@@ -45,13 +45,6 @@
                 <input type="text" name="type" id="type" 
                        class="text-gray-700 dark:text-gray-300 dark:bg-gray-700 w-full py-2 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-
-            <div class="mb-4">
-                <label for="foto_path" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Foto</label>
-                <input type="file" name="foto_path" id="foto_path" 
-                       class="text-gray-700 dark:text-gray-300 dark:bg-gray-700 w-full py-2 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
-
             <div class="mb-4">
                 <label for="content" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Inhoud</label>
                 <input type="text" name="content" id="content" 
@@ -62,7 +55,7 @@
                 <input type="text" name="order" id="order" 
                        class="text-gray-700 dark:text-gray-300 dark:bg-gray-700 w-full py-2 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-
+ 
             <div>
                 <input type="submit" value="Upload home item"
                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
