@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class History extends Model
+class HistoryPhoto extends Model
 {
     use HasFactory;
-    protected $table = 'history';
+    protected $table = 'history_photos';
     protected $fillable = [
-        'title',
-        'description',
-        'priority',
-        'yearnumber',
-        'datum'
+        'photo_path',
+        'caption',
+        'history_id'
     ];
 }
+

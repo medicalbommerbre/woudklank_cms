@@ -7,6 +7,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomePhotoController;
+use App\Http\Controllers\HistoryPhotoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,12 +34,13 @@ Route::delete('/home/{home}', [HomeController::class, 'destroy'])->middleware(['
 
 Route::get('/home/photos/{home}', [HomePhotoController::class, 'index'])->name('homefoto.foto');
 Route::get('/home/photos/{home}/addphoto', [HomePhotoController::class, 'create'])->name('homefoto.create');
-
 Route::get('/home/photo/edit/{photo}', [HomePhotoController::class, 'edit'])->middleware(['auth', 'verified'])->name('homefoto.edit');
+
 Route::put('/homefoto/{photo}/update', [HomeController::class, 'update'])->middleware(['auth', 'verified'])->name('homefoto.update');
 Route::post('/home/photo', [HomePhotoController::class, 'store'])->middleware(['auth', 'verified'])->name('homefoto.store');
 Route::delete('/home/photo/{home}', [HomePhotoController::class, 'destroy'])->middleware(['auth', 'verified'])->name('homefoto.destroy');
 // End photo home route handling
+
 
 
 // Geschiedenis route handling
@@ -49,6 +51,15 @@ Route::get('/history/{history}/edit', [HistoryController::class, 'edit'])->middl
 Route::put('/history/{history}/update', [HistoryController::class, 'update'])->middleware(['auth', 'verified'])->name('history.update');
 Route::delete('/history/{history}', [HistoryController::class, 'destroy'])->middleware(['auth', 'verified'])->name('history.destroy');
 // Geschiedenis route handling
+
+// History photo handling
+Route::get('/history/photos/{history}', [HistoryPhotoController::class, 'index'])->name('historyfoto.foto');
+Route::get('/history/photos/{history}/addphoto', [HistoryPhotoController::class, 'create'])->name('historyfoto.create');
+Route::get('/history/photo/edit/{history}', [HistoryPhotoController::class, 'edit'])->middleware(['auth', 'verified'])->name('historyfoto.edit');
+Route::put('/historyfoto/{history}/update', [HistoryPhotoController::class, 'update'])->middleware(['auth', 'verified'])->name('historyfoto.update');
+Route::post('/history/photo', [HistoryPhotoController::class, 'store'])->middleware(['auth', 'verified'])->name('historyfoto.store');
+Route::delete('/history/photo/{history}', [HistoryPhotoController::class, 'destroy'])->middleware(['auth', 'verified'])->name('historyfoto.destroy');
+// end history photo handling
 
 // Event route handling
 Route::get('/events',[EventController::class, 'index'])->middleware(['auth', 'verified'])->name('event.events');

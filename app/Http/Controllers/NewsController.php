@@ -18,27 +18,38 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $filename = '';
+
+        $request->validate([
             'caption'=> 'required|string|max:255',
-            'image_path' => 'required|string|max:255'
+            'image_path' => 'required|image'
         ]);
 
-        NewsLetter::create($data);
+        if($request->hasFile('image_path')){
+
+            $filename = $request->getSchemeAndHttpHost() . '/assets/images/' . time() . '.' . $request->image_path->extension();
+
+            $request->image_path->move(public_path('/assets/images/'), $filename);
+        }
+
+        NewsLetter::create([ 
+            'image_path' => $filename,
+            'caption' => $request->caption]);
         
         return redirect()->route('newsletter.newsletter')->with('success', 'Nieuwsbrief is succesvol toegoevoegd');
     }
 
     
-    public function edit(NewsLetter $newsLetter)
+    public function edit(NewsLetter $newsletter)
     {
-        return view('newsletter.edit', ['newsletter' => $newsLetter]);
+        return view('newsletter.edit', ['newsletter' => $newsletter]);
     }
 
     
     public function update(NewsLetter $newsLetter, Request $request)
     {
         $data = $request->validate([
-            'image_path' => 'nullable|file|max:255',
+            'image_path' => 'nullable|max:255',
             'caption' => 'required|string|max:255',
         
         ]);
@@ -48,10 +59,10 @@ class NewsController extends Controller
         return redirect()->route('newsletter.newsletter')->with('success', 'Niewsbrief is succesvol geupdated');
     }
 
-    public function destroy(NewsLetter $newsLetter)
+    public function destroy(Newsletter $newsletter)
     {
-        $newsLetter->delete();
-
-        return redirect()->route('newsletter.newsletter')->with('success', 'Niewsbrief is succesvol verwijderd');
+        $newsletter->delete();
+        return redirect()->route('newsletter.newsletter')->with('success', 'Nieuwsbrief succesvol verwijderd!');
     }
+    
 }

@@ -51,10 +51,11 @@
                             <td class="py-5 px-4 border-b text-white">{{ $homePhoto->home_id }}</td>
                             <td class="py-5 px-4 border-b text-white">{{ $homePhoto->caption }}</td>
                             <td class="py-5 px-4 border-b text-white">
-                                <img src="{{ asset( $homePhoto->photo_path) }}" alt="" class="w-20 h-20 rounded">
+                                <img src="{{ asset( $homePhoto->photo_path) }}" class="w-20 h-20 rounded">
                             </td>
                             <td class="py-5 px-4 border-b text-white">
-                                <a href="{{ route('homefoto.edit', ['home' => $homePhoto->home_id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Bewerken</a>
+                                <a href="{{ route('homefoto.edit', ['photo' => $homePhoto->id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Bewerken</a>
+
                             </td>
                             <td class="py-5 px-4 border-b text-white">
                                 <form action="{{ route('homefoto.destroy', ['home' => $homePhoto->id]) }}" method="POST">
