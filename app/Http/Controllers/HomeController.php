@@ -20,7 +20,7 @@ class HomeController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'nullable|string',
-            'content' => 'required|string|max:255',
+            'content' => 'required|string',
             'order' => 'nullable|integer',
         ]);
 

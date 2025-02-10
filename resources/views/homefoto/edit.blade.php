@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{__('Edit foto') }} {{$photo->caption}}
+                {{__('Edit foto') }}
             </h2>
         
             <div class="flex justify-start">
@@ -34,23 +34,6 @@
         @endif
     <script src="{{ asset('/js/bootstrap.js') }} "></script>
     <div class="p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
-      
-        @if ($errors->any())
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        @if (session('error'))
-        <div id="error-message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-            <span class="block sm:inline">{{ session('error') }}</span>
-        </div>
-        @endif
-    
-
         <form method="POST" action="{{route('homefoto.store',['photo'=> $photo])}}" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             @csrf
             @method('POST')
@@ -59,18 +42,28 @@
 
             <div class="mb-4">
                 <label for="caption" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Caption</label>
-                <input type="text" name="caption" id="caption" value="{{ $photo->caption }}"
+                <input type="text" name="caption" id="caption" value="{{$photo->caption}}"
                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <div class="mb-4">
-                <label for="img" class="block text-gray-700 dark:text-gray-300 font-bold mb-2" >Foto</label>
-                <input type="file" name="img" id="img"  
+                <label for="img" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Foto</label>
+            
+                
+                @if (isset($photo->photo_path) && file_exists(public_path($photo->photo_path)))
+                    <div class="mb-2">
+                        <img src="{{ asset($photo->photo_path) }}" alt="Current Photo" class="w-32 h-32 rounded">
+                    </div>
+                @endif
+            
+               
+                <input type="file" name="img" id="img"
                        class="text-gray-700 dark:text-gray-300 dark:bg-gray-700 w-full py-2 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-            <input type="hidden" name="home_id" id="home_id" value="{{ request()->home}}">
-
+            
+            <input type="hidden" name="home_id" id="home_id" value="{{ request()->photo->home_id }}">
+          
             <div>
-                <input type="submit" value="Upload foto's"
+                <input type="submit" value="Update foto's"
                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
         </form>

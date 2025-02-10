@@ -47,10 +47,21 @@
 
             <div class="mb-4">
                 <label for="event_description" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Prioriteit(In cijfers)</label>
-                <textarea type='number' name="priority" id="priority" placeholder="Bijvoorbeeld: 12"
-                          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                <input type='integer' name="priority" id="priority" placeholder="Bijvoorbeeld: 12"
+                          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"></input>
             </div>
 
+            <div class="mb-4">
+                <label for="yearnumber" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Jaartal</label>
+                <input type="integer" name="yearnumber" id="yearnumber" placeholder="Jaartal"
+                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="datum" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Datum</label>
+                <input type="date" name="datum" id="datum" placeholder="Datum"
+                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
             <div>
                 <input type="submit" value="Maak een nieuw event aan"
                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">

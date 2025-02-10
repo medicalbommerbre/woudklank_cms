@@ -25,30 +25,6 @@
             <span class="block sm:inline">{{ session('error') }}</span>
         </div>
     @endif
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                var successMessage = document.getElementById('success-message');
-                if (successMessage) {
-                    successMessage.style.display = 'none';
-                }
-            }, 4000); 
-    
-
-            setTimeout(function() {
-                var errorMessage = document.getElementById('error-message');
-                if (errorMessage) {
-                    errorMessage.style.display = 'none';
-                }
-            }, 4000); 
-        });
-    </script>
-    
-     
-         
-   
-
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg">
                 <thead>
@@ -78,7 +54,7 @@
                             <td class="py-5 px-4 border-b text-white">{{ $event->event_time = date('H:i', strtotime($event->event_time));}}</td>
                             <td class="py-5 px-4 border-b text-white">{{ $event->location }}</td>
                             <td class="py-5 px-4 border-b text-white">
-                                <img src="{{ asset($event->image_path) }}" alt="Geen foto" >
+                                <img src="{{ asset( $event->image_path) }}" alt="" class="w-20 h-20 rounded">
                             </td>
                             <td class="py-5 px-4 border-b text-white">{{ $event->created_at }}</td>
                             <td class="py-5 px-4 border-b text-white">{{ $event->updated_at }}</td>

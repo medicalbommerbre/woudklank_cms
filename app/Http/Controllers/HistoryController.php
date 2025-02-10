@@ -19,8 +19,11 @@ class HistoryController extends Controller
     {
         $data = $request->validate([
             'title'=> 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'priority' => 'nullable|int'
+            'description' => 'required|string',
+            'priority' => 'nullable|int',
+            'yearnumber' => 'required|int',
+            'datum' => 'nullable|date'
+            
         ]);
         
         if (empty($data['priority'])) {
@@ -42,13 +45,16 @@ class HistoryController extends Controller
     public function update(History $history, Request $request)
     {
         $data = $request->validate([
+            'priority' => 'nullable|int',
             'title'=> 'required|string|max:255',
-            'description' => 'required|string|max:255'
+            'description' => 'required|string|max:255',
+            'yearnumber' => 'required|int',
+            'datum' => 'nullable|date'
         ]);
 
         $history->update($data);
 
-        return redirect()->route('history.history')->with('success', 'Geschiedenis item is succesvol geupdated');
+        return redirect()->route('history.history')->with('success', 'Item is succesvol geupdated');
     }
 
     public function destroy(History $history)

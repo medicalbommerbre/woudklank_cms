@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\HomePhotos;
-use App\Models\HomePage;
 use Illuminate\Http\Request;
 
 class HomePhotoController extends Controller
@@ -11,10 +10,10 @@ class HomePhotoController extends Controller
     public function index($home) {
 
         $homePhotos = HomePhotos::where('home_id', $home)->get();
-        $id = HomePage::orderBy('id', 'asc')->get();
+      
     
         return view('homefoto.foto', [
-            'home' => $homePhotos
+            'home' => $homePhotos    
         ]);
     }
     
@@ -54,10 +53,9 @@ class HomePhotoController extends Controller
     }
     public function edit(HomePhotos $photo)
     {
-        dd($photo);
-
-        return view('homefoto.edit');
+        return view('homefoto.edit', ['photo' => $photo]);
     }
+    
     
 
     public function update(HomePhotos $home, Request $request){
