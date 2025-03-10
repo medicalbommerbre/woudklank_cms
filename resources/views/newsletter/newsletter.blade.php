@@ -27,7 +27,8 @@
                 <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg">
                     <thead>
                         <tr class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-left">
-                            <th class="py-5 px-4 border-b">ID</th>
+                            <th class="py-5 px-4 border-b">Titel</th>
+                            <th class="py-5 px-4 border-b">Type</th>
                             <th class="py-5 px-4 border-b">Caption</th>
                             <th class="py-5 px-4 border-b">Foto</th>
                             <th class="py-5 px-4 border-b">Gemaakt op</th>
@@ -39,7 +40,8 @@
                     <tbody>
                         @foreach ($newsletter as $newsletter1)
                             <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <td class="py-5 px-4 border-b text-white">{{ $newsletter1->id }}</td>
+                                <td class="py-5 px-4 border-b text-white">{{ $newsletter1->title }}</td>
+                                <td class="py-5 px-4 border-b text-white">{{ $newsletter1->type }}</td>
                                 <td class="py-5 px-4 border-b text-white">{{ $newsletter1->caption }}</td>
                                 <td class="py-5 px-4 border-b text-white">
                                     <img src="{{ asset( $newsletter1->image_path) }}" alt="" class="w-20 h-20 rounded">

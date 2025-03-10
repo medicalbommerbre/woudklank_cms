@@ -29,6 +29,9 @@ Route::get('/home/{home}/edit', [HomeController::class, 'edit'])->middleware(['a
 Route::put('/home/{home}/update', [HomeController::class, 'update'])->middleware(['auth', 'verified'])->name('home.update');
 Route::delete('/home/{home}', [HomeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('home.destroy');
 // End home route handling
+Route::get('/home/preview', [HomeController::class, 'preview'])->middleware(['auth', 'verified'])->name('home.preview');
+Route::get('/home/confirm', [HomeController::class, 'confirm'])->middleware(['auth', 'verified'])->name('home.confirm');
+Route::get('/home/cancel', [HomeController::class, 'cancel'])->middleware(['auth', 'verified'])->name('home.cancel');
 
 // Photo home route handling
 

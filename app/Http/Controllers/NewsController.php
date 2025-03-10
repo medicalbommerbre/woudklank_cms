@@ -21,8 +21,10 @@ class NewsController extends Controller
         $filename = '';
 
         $request->validate([
+            'title'=> 'required|string|max:255',
             'caption'=> 'required|string|max:255',
-            'image_path' => 'required|image'
+            'image_path' => 'nullable|image',
+            'type'=> 'required|string|max:255'
         ]);
 
         if($request->hasFile('image_path')){
@@ -34,7 +36,9 @@ class NewsController extends Controller
 
         NewsLetter::create([ 
             'image_path' => $filename,
-            'caption' => $request->caption]);
+            'caption' => $request->caption,
+            'title' => $request->title,
+            'type' => $request->type,]);
         
         return redirect()->route('newsletter.newsletter')->with('success', 'Nieuwsbrief is succesvol toegoevoegd');
     }
@@ -49,8 +53,10 @@ class NewsController extends Controller
     public function update(NewsLetter $newsLetter, Request $request)
     {
         $data = $request->validate([
-            'image_path' => 'nullable|max:255',
-            'caption' => 'required|string|max:255',
+            'title'=> 'required|string|max:255',
+            'caption'=> 'required|string|max:255',
+            'image_path' => 'nullable|image',
+            'type'=> 'required|string|max:255'
         
         ]);
 

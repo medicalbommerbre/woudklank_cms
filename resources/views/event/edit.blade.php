@@ -45,7 +45,8 @@
         }, 4000);</script>
     @endif
         
-            @csrf<form method="POST" action="{{route('event.update',['event'=> $event])}}" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+           <form method="POST" action="{{route('event.update',['event'=> $event])}}" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            @csrf
             @method('PUT')
    
 

@@ -32,6 +32,7 @@ class ArchiveController extends Controller
             'location' => 'nullable|string|max:255',
             'image_path' => 'nullable|string|max:255',
         ]);
+        
 
         $event->update($data);
 

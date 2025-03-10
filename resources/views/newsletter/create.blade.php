@@ -31,13 +31,28 @@
         <form method="POST" action="{{ route('newsletter.store') }}" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             @csrf
             @method('POST')
-
             <div class="mb-4">
-                <label for="caption" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Caption</label>
-                <input type="text" name="caption" id="caption" placeholder="Nieuwsbrief 3e kwartaal"
+                <label for="title" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Titel</label>
+                <input type="text" name="title" id="title" placeholder=""
                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
+            <div class="mb-4">
+                <label for="caption" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Beschrijving</label>
+                <input type="text" name="caption" id="caption" placeholder=""
+                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="type" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Type</label>
+                <select name="type" id="type" 
+                        class="text-gray-700 dark:text-gray-300 dark:bg-gray-700 w-full py-2 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">Selecteer een waarde</option>
+                    <option value="Nieuwsbrief">Nieuwsbrief</option>
+                    <option value="Nieuwsitem">Nieuwsitem</option>
+                </select>
+            </div>
+            
             <div class="mb-4">
                 <label for="image_path" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Niewsbrief</label>
                 <input type="file" name="image_path" id="image_path" 

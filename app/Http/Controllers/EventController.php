@@ -28,7 +28,7 @@ class EventController extends Controller
         $data['event_time'] = date('H:i', strtotime($request->input('event_time')));
 
 
-         $request->validate([
+        $request->validate([
             'event_title' => 'required|string|max:255',
             'event_description' => 'required|string',
             'event_date' => 'required|date',
