@@ -41,26 +41,36 @@
             @csrf
             @method('PUT')
    
-
             <div class="mb-4">
-                <label for="caption" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Caption</label>
+                <label for="title" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Titel</label>
+                <input type="text" name="title" id="title" placeholder="Naam" value="{{ $newsletter->title}}"
+                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="caption" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Beschrijving</label>
                 <input type="text" name="caption" id="caption" placeholder="Naam" value="{{ $newsletter->caption}}"
                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
+            <div class="mb-4">
+                <label for="type" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Type</label>
+                <select name="type" id="type" 
+                        class="text-gray-700 dark:text-gray-300 dark:bg-gray-700 w-full py-2 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="{{$newsletter->type}}">{{$newsletter->type}}</option>
+                        @if ($newsletter->type != 'Nieuwsbrief')
+                            <option value="Nieuwsbrief">Nieuwsbrief</option>
+                        @endif
+                        <option value="Nieuwsitem">Nieuwsitem</option>
+                        
+                </select>
+            </div>
+          
+
 
             <div class="mb-4">
                 <label for="img" class="block text-gray-700 dark:text-gray-300 font-bold mb-2" >Foto</label>
                 <input type="file" name="img" id="img"  alt="geenfoto"
                        class="text-gray-700 dark:text-gray-300 dark:bg-gray-700 w-full py-2 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-            {{-- <input type="hidden" name="history_id" id="history_id" value="{{ request()->newsLetter}}"> --}}
-
-
-
-
-         
-
-
             <div>
                 <input type="submit" value="Update"
                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">

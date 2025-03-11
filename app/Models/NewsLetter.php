@@ -9,8 +9,9 @@ class NewsLetter extends Model
 {
     use HasFactory;
     protected $fillable = [
+      'title',
       'image_path',
-      'caption'
-
+      'caption',
+      'type'
     ];
 }

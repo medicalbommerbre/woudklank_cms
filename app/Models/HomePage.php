@@ -10,9 +10,14 @@ class HomePage extends Model
     use HasFactory;
     protected $fillable = [
      'title',
-     'type',
      'foto_path',
      'content',
-     'order'
+     'button',
+     'button_alt',
+     'status',
+     'order',
+     'colour_text',
+     'colour_background',
+     'colour_button',
     ];
 }

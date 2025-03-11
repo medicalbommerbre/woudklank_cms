@@ -57,7 +57,7 @@
                                 <a href="{{ route('historyfoto.edit', ['history' => $homePhoto->id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Bewerken</a>
                             </td>
                             <td class="py-5 px-4 border-b text-white">
-                                <form action="{{ route('homefoto.destroy', ['home' => $homePhoto->id]) }}" method="POST">
+                                <form action="{{ route('historyfoto.destroy', ['history' => $homePhoto->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE') 
                                     <input type="submit" value="Verwijderen" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">

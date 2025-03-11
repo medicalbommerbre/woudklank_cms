@@ -70,9 +70,9 @@
                             
                             <td class="py-5 px-4 border-b text-white">
                                 <form action="{{ route('event.destroy', ['event' => $event->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE') 
-                                    <input type="submit" value="Verwijderen" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                @csrf
+                                @method('DELETE') 
+                                <input type="submit" value="Verwijderen" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                 </form>
                             </td>
                             

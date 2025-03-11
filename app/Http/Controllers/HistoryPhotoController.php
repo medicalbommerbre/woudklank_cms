@@ -9,7 +9,7 @@ class HistoryPhotoController extends Controller
     public function index($history){
 
         $data = HistoryPhoto::where('history_id', $history)->get();
-        //dd($data);
+
         return view('historyfoto.foto',['history'=> $data ]);
 
 

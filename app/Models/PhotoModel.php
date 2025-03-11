@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HomePhotos extends Model
+class PhotoModel extends Model
 {
+  
+    protected $table = 'archive_photo';
     use HasFactory;
-    protected $table = 'home_photos';
-    
     protected $fillable = [
-        'photo_path',
+        'image_path',
         'caption',
-        'home_id'
+        'archived_event_id'
     ];
 }

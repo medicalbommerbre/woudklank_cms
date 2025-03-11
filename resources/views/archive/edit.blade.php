@@ -37,6 +37,8 @@
             <span class="block sm:inline">{{ session('error') }}</span>
         </div>
     @endif
+
+
         <form method="POST" action="{{route('archive.update',['event'=> $event])}}" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             @csrf
             @method('PUT')

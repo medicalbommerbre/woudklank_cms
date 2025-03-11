@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{__('Edit foto') }}
+                {{__('Upload fotos ')}} ID: {{request()->id}}
             </h2>
         
             <div class="flex justify-start">
@@ -16,6 +16,9 @@
             
         </div>
     </x-slot>
+    <div class="p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
+      
+    <script src="{{ asset('/js/bootstrap.js') }} "></script>
     <div class="p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
       
         @if ($errors->any())
@@ -32,9 +35,9 @@
             <span class="block sm:inline">{{ session('error') }}</span>
         </div>
         @endif
-    <script src="{{ asset('/js/bootstrap.js') }} "></script>
-    <div class="p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
-        <form method="POST" action="{{route('homefoto.store',['photo'=> $photo])}}" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+    
+
+        <form method="POST" action="{{ route('archivefoto.store') }}" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             @csrf
             @method('POST')
       
@@ -42,28 +45,19 @@
 
             <div class="mb-4">
                 <label for="caption" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Caption</label>
-                <input type="text" name="caption" id="caption" value="{{$photo->caption}}"
+                <input type="caption" name="caption" id="caption" placeholder="Caption"
                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <div class="mb-4">
-                <label for="img" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Foto</label>
-            
-                
-                @if (isset($photo->photo_path) && file_exists(public_path($photo->photo_path)))
-                    <div class="mb-2">
-                        <img src="{{ asset($photo->photo_path) }}" alt="Current Photo" class="w-32 h-32 rounded">
-                    </div>
-                @endif
-            
-               
-                <input type="file" name="img" id="img"
+                <label for="image_path" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Foto</label>
+                <input type="file" name="image_path" id="image_path"  
                        class="text-gray-700 dark:text-gray-300 dark:bg-gray-700 w-full py-2 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             
-            <input type="hidden" name="home_id" id="home_id" value="{{ request()->photo->home_id }}">
-          
+            <input type="hidden" name="id" id="id" value="{{ request()->id}}">
+         
             <div>
-                <input type="submit" value="Update foto's"
+                <input type="submit" value="Upload foto's"
                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
         </form>
