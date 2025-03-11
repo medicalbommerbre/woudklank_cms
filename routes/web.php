@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
-use App\Http\Controllers\HomePhotoController;
+use App\Http\Controllers\ArchivePhotoController;
 use App\Http\Controllers\HistoryPhotoController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,19 +34,9 @@ Route::get('/home/confirm', [HomeController::class, 'confirm'])->middleware(['au
 Route::get('/home/cancel', [HomeController::class, 'cancel'])->middleware(['auth', 'verified'])->name('home.cancel');
 
 // Photo home route handling
-
-Route::get('/home/photos/{home}', [HomePhotoController::class, 'index'])->name('homefoto.foto');
-Route::get('/home/photos/{home}/addphoto', [HomePhotoController::class, 'create'])->name('homefoto.create');
-Route::get('/home/photo/edit/{photo}', [HomePhotoController::class, 'edit'])->middleware(['auth', 'verified'])->name('homefoto.edit');
-
-Route::put('/homefoto/{photo}/update', [HomeController::class, 'update'])->middleware(['auth', 'verified'])->name('homefoto.update');
-Route::post('/home/photo', [HomePhotoController::class, 'store'])->middleware(['auth', 'verified'])->name('homefoto.store');
-Route::delete('/home/photo/{home}', [HomePhotoController::class, 'destroy'])->middleware(['auth', 'verified'])->name('homefoto.destroy');
 // End photo home route handling
 
-
-
-// Geschiedenis route handling
+// Geschdenis route handling
 Route::get('/history',[HistoryController::class, 'index'])->middleware(['auth', 'verified'])->name('history.history');
 Route::get('/history/create', [HistoryController::class, 'create'])->middleware(['auth', 'verified'])->name('history.create');
 Route::post('/history', [HistoryController::class, 'store'])->middleware(['auth', 'verified'])->name('history.store');
@@ -81,6 +71,7 @@ Route::put('/archive/{event}/update', [ArchiveController::class, 'update'])->mid
 Route::delete('/archive/{event}', [ArchiveController::class, 'destroy'])->middleware(['auth', 'verified'])->name('archive.destroy');
 // End archive route handling
 
+
 // News letter route handling
 Route::get('/newsletter',[NewsController::class, 'index'])->middleware(['auth', 'verified'])->name('newsletter.newsletter');
 Route::get('/newsletter/create',[NewsController::class, 'create'])->middleware(['auth', 'verified'])->name('newsletter.create');
@@ -91,9 +82,12 @@ Route::delete('/newsletter/{newsletter}',[NewsController::class, 'destroy'])->mi
 // End news letter route handling
 
 // Phothobook route handling
-Route::get('/photobook', function () {
-    return view('photobook');
-})->middleware(['auth', 'verified'])->name('photobook');
+Route::get('/archive/photos/{id}', [ArchivePhotoController::class, 'foto'])->name('archive.foto');
+Route::get('/archive/photos/{id}/addphoto', [ArchivePhotoController::class, 'create'])->name('archive.create');
+Route::get('/archive/photo/edit/{id}', [ArchivePhotoController::class, 'edit'])->middleware(['auth', 'verified'])->name('archive.fotoedit');
+Route::put('/archive/{id}/update/foto', [ArchivePhotoController::class, 'update'])->middleware(['auth', 'verified'])->name('archive.fotoupdate');
+Route::post('/archive/photo', [ArchivePhotoController::class, 'store'])->middleware(['auth', 'verified'])->name('archive.fotostore');
+Route::delete('/archive/photo/{id}', [ArchivePhotoController::class, 'destroy'])->middleware(['auth', 'verified'])->name('archive.destroy');
 // End photobook rout ehandling
 
 

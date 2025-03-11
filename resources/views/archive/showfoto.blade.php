@@ -7,7 +7,7 @@
             <script src="{{ asset('/js/bootstrap.js') }} "></script>
             <div class="flex justify-start">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-4 rounded float-left"
-                onclick="window.location.href='{{ url('/history/photos/' . request()->history . '/addphoto') }}'">
+                onclick="window.location.href='{{ url('/archive/photos/' . request()->id . '/addphoto') }}'">
                     Voeg foto toe
                 </button>
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
@@ -38,7 +38,6 @@
             <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg">
                 <thead>
                     <tr class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-left">
-                        <th class="py-5 px-4 border-b">ID</th>
                         <th class="py-5 px-4 border-b">Caption</th>
                         <th class="py-5 px-4 border-b">Foto</th>
                         <th class="py-5 px-4 border-b">Bewerken</th>
@@ -46,18 +45,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($history as $homePhoto)
+             
+                    @foreach ($id as $homePhoto)
                         <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <td class="py-5 px-4 border-b text-white">{{ $homePhoto->history_id }}</td>
                             <td class="py-5 px-4 border-b text-white">{{ $homePhoto->caption }}</td>
                             <td class="py-5 px-4 border-b text-white">
-                                <img src="{{ asset( $homePhoto->photo_path) }}" alt="" class="w-20 h-20 rounded">
+                                <img src="{{ asset( $homePhoto->image_path) }}" alt="" class="w-20 h-20 rounded">
                             </td>
                             <td class="py-5 px-4 border-b text-white">
-                                <a href="{{ route('historyfoto.edit', ['history' => $homePhoto->id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Bewerken</a>
+                                <a href="{{ route('archive.fotoedit', ['id' => $homePhoto->id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Bewerken</a>
                             </td>
                             <td class="py-5 px-4 border-b text-white">
-                                <form action="{{ route('historyfoto.destroy', ['history' => $homePhoto->id]) }}" method="POST">
+                                <form action="{{ route('archive.destroy', ['id' => $homePhoto->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE') 
                                     <input type="submit" value="Verwijderen" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">

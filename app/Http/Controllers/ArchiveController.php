@@ -10,9 +10,15 @@ class ArchiveController extends Controller
     public function index()
     {
         $events = ArchivedEvent::all();
-        return view('archive.archive', ['events' => $events]);
+   
+        return view('archive.archive', ['event' => $events]);
     }
-
+    public function foto($id)
+    {
+        $events = ArchivedEvent::where('id','=',$id);
+   
+        return view('archive.showfoto', ['id' => $id]);
+    }
     public function edit(ArchivedEvent $event)
     {
         return view('archive.edit', ['event' => $event]);
@@ -38,10 +44,11 @@ class ArchiveController extends Controller
 
         return redirect()->route('archive.archive')->with('success', 'Event is succesvol geupdated');
     }
-    public function destroy(ArchivedEvent $event)
+    public function destroy(ArchivedEvent $id)
     {
-        $event->delete();
-
+        $id->delete();
+    
         return redirect()->route('archive.archive')->with('success', 'Event is succesvol verwijderd');
     }
+    
 }

@@ -28,9 +28,7 @@
                     <x-nav-link :href="route('archive.archive')" :active="request()->routeIs('archive.archive')">
                         {{ __('Archief') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('photobook')" :active="request()->routeIs('photobook')">
-                        {{ __('Fotoboek') }}
-                    </x-nav-link>
+
            
             
                     
